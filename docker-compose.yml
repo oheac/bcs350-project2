@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  db:
+    image: mysql:8.0
+    container_name: bcs350-project2_db
+    env_file:
+      - .env
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./db_schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - bcs350-project2
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$MYSQL_ROOT_PASSWORD" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # PHP Application Service
+  app:
+    build: .
+    container_name: bcs350-project2_app
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8080:80"
+    networks:
+      - bcs350-project2
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql-data:
+
+networks:
+  bcs350-project2:
+    driver: bridge

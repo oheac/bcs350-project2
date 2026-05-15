@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+.DS_Store
+*.md
+.env
+!.env.example
+.vscode
+.idea
+composer.lock
+vendor/tests
+dev.ps1
