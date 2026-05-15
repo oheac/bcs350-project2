@@ -105,29 +105,25 @@ project-root/
 - Route handlers in separate files under `routes/`
 
 ### Database
-- MongoDB → MySQL with PDO
-- Mongoose schemas → SQL table definitions
-- JSON documents → Normalized relational tables
-
+- MySQL with PDO
 ### Models
-- Mongoose models → PHP classes with PDO queries
-- Hooks → Regular class methods
+- PHP classes with PDO queries
 
 ### Authentication
-- express-session → PHP native `$_SESSION`
-- bcryptjs → PHP `password_hash()` and `password_verify()`
+- PHP native `$_SESSION`
+- PHP `password_hash()` and `password_verify()`
 
 ### Sessions
-- In-memory (Express) → File/DB based (PHP)
+- File/DB based (PHP)
 - Quiz data stored in `$_SESSION['currentQuiz']`
 
 ### Quiz Generation
-- Gemini API → JSON file (`questions.json`)
-- Dynamic generation → Pre-loaded questions with keyword-based filtering
+- JSON file (`questions.json`)
+- Pre-loaded questions with keyword-based filtering
 - No external API calls needed
 
 ### API Responses
-- Express JSON → PHP `json_encode()` with proper headers
+- PHP `json_encode()` with proper headers
 
 ## Security Notes
 
